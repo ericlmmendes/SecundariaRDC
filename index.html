@@ -143,7 +143,7 @@
         .layout-container {
             position: relative;
             width: 900px;
-            height: 850px; /* Aumentado para evitar sobreposição */
+            height: 850px; 
             background-color: var(--surface-color);
             border: 1px solid var(--border-color);
             box-shadow: 0 2px 10px var(--shadow-color);
@@ -163,8 +163,8 @@
         .c-vertical { top: 20px; left: 170px; width: 50px; height: 600px; }
         .c-horizontal-top { top: 20px; left: 170px; width: 450px; height: 50px; }
         .c-mesa { top: 280px; left: 450px; width: 50px; height: 60px; }
-        .c-consolidacao { top: 550px; left: 450px; width: 250px; height: 50px; }
-        .c-devolucao { top: 760px; left: 450px; width: 50px; height: 60px; } /* Posição ajustada */
+        .c-consolidacao { top: 550px; left: 300px; width: 280px; height: 50px; }
+        .c-devolucao { top: 760px; left: 450px; width: 50px; height: 60px; }
 
         /* Postos de Trabalho */
         .posto {
@@ -205,7 +205,7 @@
             box-shadow: 0 0 0 2px var(--secondary-color);
         }
         .posto-com-extras {
-            height: 95px;
+            height: 115px; 
             justify-content: flex-start;
         }
         .campos-extras {
@@ -237,8 +237,9 @@
         }
 
         /* Posições dos Postos */
-        #chegada-1 { top: 35px; left: 650px; }
-        #chegada-2 { top: 140px; left: 650px; }
+        #chegada-1 { top: 40px; left: 680px; }
+        #chegada-2 { top: 160px; left: 680px; }
+
         #esteira-1 { top: 100px; left: 20px; }
         #esteira-2 { top: 170px; left: 20px; }
         #esteira-3 { top: 240px; left: 20px; }
@@ -248,13 +249,17 @@
         #esteira-7 { top: 170px; left: 240px; }
         #esteira-8 { top: 240px; left: 240px; }
         #esteira-9 { top: 310px; left: 240px; }
+
         #mesa-1 { top: 285px; left: 520px; }
         #apoio-1 { top: 365px; left: 520px; }
-        #consolidacao-1 { top: 525px; left: 270px; }
-        #consolidacao-2 { top: 440px; left: 510px; }
-        #consolidacao-3 { top: 630px; left: 510px; }
-        #consolidacao-4 { top: 525px; left: 720px; }
-        #devolucao-1 { top: 765px; left: 520px; } /* Posição ajustada */
+
+        /* Posições dos postos de Consolidação ajustadas para evitar sobreposição da esteira */
+        #consolidacao-1 { top: 425px; left: 300px; }
+        #consolidacao-2 { top: 610px; left: 300px; }
+        #consolidacao-3 { top: 425px; left: 450px; }
+        #consolidacao-4 { top: 610px; left: 450px; }
+
+        #devolucao-1 { top: 765px; left: 520px; }
 
         /* Rodapé */
         footer {
@@ -290,7 +295,7 @@
         <main>
             <div class="controls">
                 <h2>Controles</h2>
-                <textarea id="names" placeholder="Cole os nomes dos colaboradores aqui, um por linha."></textarea>
+                <textarea id="names" placeholder="Cole os nomes dos colaboradores aqui, um por linha." rows="10"></textarea>
                 <button id="distributeBtn" type="button">Distribuir Automaticamente</button>
                 <div id="message"></div>
             </div>
@@ -304,22 +309,46 @@
                 <div class="conveyor c-devolucao"></div>
 
                 <!-- Postos de Trabalho -->
+
+                <!-- Setor: Chegada -->
                 <div id="chegada-1" class="posto posto-com-extras" aria-label="Posto de trabalho Chegada 1">
                     <span class="setor">Chegada</span>
                     <span class="colaborador" data-setor="Chegada"></span>
                     <div class="campos-extras">
-                        <span class="campo-extra">Login: <span class="input-manual" contenteditable="true"></span></span>
-                        <span class="campo-extra">PDA: <span class="input-manual" contenteditable="true"></span></span>
+                        <div class="campo-extra">
+                            <label id="label-chegada-1-login">Login:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-chegada-1-login"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-chegada-1-pda">PDA:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-chegada-1-pda"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-chegada-1-bipadas">Qt.bipadas:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-chegada-1-bipadas"></span>
+                        </div>
                     </div>
                 </div>
                 <div id="chegada-2" class="posto posto-com-extras" aria-label="Posto de trabalho Chegada 2">
                     <span class="setor">Chegada</span>
                     <span class="colaborador" data-setor="Chegada"></span>
                     <div class="campos-extras">
-                        <span class="campo-extra">Login: <span class="input-manual" contenteditable="true"></span></span>
-                        <span class="campo-extra">PDA: <span class="input-manual" contenteditable="true"></span></span>
+                        <div class="campo-extra">
+                            <label id="label-chegada-2-login">Login:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-chegada-2-login"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-chegada-2-pda">PDA:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-chegada-2-pda"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-chegada-2-bipadas">Qt.bipadas:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-chegada-2-bipadas"></span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Setor: Esteira -->
                 <div id="esteira-1" class="posto" aria-label="Posto de trabalho Esteira 1"><span class="setor">Esteira</span><span class="colaborador" data-setor="Esteira"></span></div>
                 <div id="esteira-2" class="posto" aria-label="Posto de trabalho Esteira 2"><span class="setor">Esteira</span><span class="colaborador" data-setor="Esteira"></span></div>
                 <div id="esteira-3" class="posto" aria-label="Posto de trabalho Esteira 3"><span class="setor">Esteira</span><span class="colaborador" data-setor="Esteira"></span></div>
@@ -329,40 +358,86 @@
                 <div id="esteira-7" class="posto" aria-label="Posto de trabalho Esteira 7"><span class="setor">Esteira</span><span class="colaborador" data-setor="Esteira"></span></div>
                 <div id="esteira-8" class="posto" aria-label="Posto de trabalho Esteira 8"><span class="setor">Esteira</span><span class="colaborador" data-setor="Esteira"></span></div>
                 <div id="esteira-9" class="posto" aria-label="Posto de trabalho Esteira 9"><span class="setor">Esteira</span><span class="colaborador" data-setor="Esteira"></span></div>
+                
+                <!-- Setor: Mesa e Apoio -->
                 <div id="mesa-1" class="posto" aria-label="Posto de trabalho Mesa 1"><span class="setor">Mesa</span><span class="colaborador" data-setor="Mesa"></span></div>
                 <div id="apoio-1" class="posto" aria-label="Posto de trabalho Apoio 1"><span class="setor">Apoio</span><span class="colaborador" data-setor="Apoio"></span></div>
+                
+                <!-- Setor: Consolidação -->
                 <div id="consolidacao-1" class="posto posto-com-extras" aria-label="Posto de trabalho Consolidação 1">
                     <span class="setor">Consolidação</span>
                     <span class="colaborador" data-setor="Consolidação"></span>
                     <div class="campos-extras">
-                        <span class="campo-extra">Login: <span class="input-manual" contenteditable="true"></span></span>
-                        <span class="campo-extra">PDA: <span class="input-manual" contenteditable="true"></span></span>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-1-login">Login:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-1-login"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-1-pda">PDA:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-1-pda"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-1-bipadas">Qt.bipadas:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-1-bipadas"></span>
+                        </div>
                     </div>
                 </div>
                 <div id="consolidacao-2" class="posto posto-com-extras" aria-label="Posto de trabalho Consolidação 2">
                     <span class="setor">Consolidação</span>
                     <span class="colaborador" data-setor="Consolidação"></span>
                     <div class="campos-extras">
-                        <span class="campo-extra">Login: <span class="input-manual" contenteditable="true"></span></span>
-                        <span class="campo-extra">PDA: <span class="input-manual" contenteditable="true"></span></span>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-2-login">Login:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-2-login"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-2-pda">PDA:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-2-pda"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-2-bipadas">Qt.bipadas:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-2-bipadas"></span>
+                        </div>
                     </div>
                 </div>
                 <div id="consolidacao-3" class="posto posto-com-extras" aria-label="Posto de trabalho Consolidação 3">
                     <span class="setor">Consolidação</span>
                     <span class="colaborador" data-setor="Consolidação"></span>
                     <div class="campos-extras">
-                        <span class="campo-extra">Login: <span class="input-manual" contenteditable="true"></span></span>
-                        <span class="campo-extra">PDA: <span class="input-manual" contenteditable="true"></span></span>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-3-login">Login:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-3-login"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-3-pda">PDA:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-3-pda"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-3-bipadas">Qt.bipadas:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-3-bipadas"></span>
+                        </div>
                     </div>
                 </div>
                 <div id="consolidacao-4" class="posto posto-com-extras" aria-label="Posto de trabalho Consolidação 4">
                     <span class="setor">Consolidação</span>
                     <span class="colaborador" data-setor="Consolidação"></span>
                     <div class="campos-extras">
-                        <span class="campo-extra">Login: <span class="input-manual" contenteditable="true"></span></span>
-                        <span class="campo-extra">PDA: <span class="input-manual" contenteditable="true"></span></span>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-4-login">Login:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-4-login"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-4-pda">PDA:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-4-pda"></span>
+                        </div>
+                        <div class="campo-extra">
+                            <label id="label-consolidacao-4-bipadas">Qt.bipadas:</label>
+                            <span class="input-manual" contenteditable="true" aria-labelledby="label-consolidacao-4-bipadas"></span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Setor: Devolução -->
                 <div id="devolucao-1" class="posto" aria-label="Posto de trabalho Devolução 1"><span class="setor">Devolução</span><span class="colaborador" data-setor="Devolução"></span></div>
             </div>
         </main>
@@ -430,11 +505,13 @@
 
             // --- Lógica Principal ---
             const distributeNames = () => {
-                // Limpa o estado anterior
-                Object.values(spotsBySector).flat().forEach(el => {
-                    el.textContent = '';
-                    el.removeAttribute('contenteditable');
-                });
+                // Limpa o estado anterior de forma otimizada
+                for (const sectorSpots of Object.values(spotsBySector)) {
+                    for (const spot of sectorSpots) {
+                        spot.textContent = '';
+                        spot.removeAttribute('contenteditable');
+                    }
+                }
 
                 const names = namesInput.value.split('\n').map(n => n.trim()).filter(Boolean);
 
